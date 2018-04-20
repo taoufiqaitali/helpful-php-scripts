@@ -13,7 +13,7 @@ function getDirContents($dir)
     if ( $entry=='.' || $entry=='..' ) continue;
 
     $entry = $dir.DIRECTORY_SEPARATOR.$entry;
-    if ( is_file($entry) and (strpos($entry,'.css')||strpos($entry,'.tpl')) )
+    if ( is_file($entry) && (strpos($entry,'.php')) )
     {
       $contents[] = $entry;
     }
@@ -25,17 +25,12 @@ function getDirContents($dir)
   closedir($handle);
   return $contents;
 }
-$search="test";
-$replacewith="test";
+
 $files=getDirContents('./');
 foreach($files as $file){
 $cnt=file_get_contents($file);
-if (strpos($cnt,$search)){
-$cnt=str_replace($search,$replacewith,$cnt);
-file_put_contents($file,$cnt);
+if (strpos($cnt,'beta')){
 echo $file."<br />";
-
-
 
 }
 }
